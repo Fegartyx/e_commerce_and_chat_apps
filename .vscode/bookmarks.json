@@ -1,0 +1,29 @@
+{
+	"files": [
+		{
+			"path": "lib/pages/product_pages.dart",
+			"bookmarks": [
+				{
+					"line": 31,
+					"column": 44,
+					"label": "Modal"
+				},
+				{
+					"line": 303,
+					"column": 32,
+					"label": "Description"
+				},
+				{
+					"line": 331,
+					"column": 36,
+					"label": "Familiar Shoes"
+				},
+				{
+					"line": 364,
+					"column": 29,
+					"label": "Buttons"
+				}
+			]
+		}
+	]
+}
