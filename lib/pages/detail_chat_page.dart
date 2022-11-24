@@ -1,17 +1,25 @@
+import 'package:e_commerce_and_chat_apps/models/product_model.dart';
 import 'package:e_commerce_and_chat_apps/theme.dart';
 import 'package:e_commerce_and_chat_apps/widgets/chat_bubble.dart';
 import 'package:flutter/material.dart';
 
-class DetailChatPage extends StatelessWidget {
-  const DetailChatPage({Key? key}) : super(key: key);
+class DetailChatPage extends StatefulWidget {
+  DetailChatPage({Key? key, required this.product}) : super(key: key);
 
+  ProductModel product;
+
+  @override
+  State<DetailChatPage> createState() => _DetailChatPageState();
+}
+
+class _DetailChatPageState extends State<DetailChatPage> {
   @override
   Widget build(BuildContext context) {
     PreferredSizeWidget header() {
       return PreferredSize(
-        preferredSize: Size.fromHeight(90),
+        preferredSize: const Size.fromHeight(90),
         child: Container(
-          padding: EdgeInsets.only(top: 20),
+          padding: const EdgeInsets.only(top: 20),
           child: AppBar(
             backgroundColor: bgColor,
             centerTitle: false,
@@ -21,7 +29,7 @@ class DetailChatPage extends StatelessWidget {
                   'assets/image_shop_logo_online.png',
                   width: 50,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 12,
                 ),
                 Column(
@@ -50,8 +58,8 @@ class DetailChatPage extends StatelessWidget {
       return Container(
         width: 225,
         height: 74,
-        margin: EdgeInsets.only(bottom: 20),
-        padding: EdgeInsets.all(10),
+        margin: const EdgeInsets.only(bottom: 20),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: bgColor5,
           borderRadius: BorderRadius.circular(12),
@@ -64,12 +72,12 @@ class DetailChatPage extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Image.asset(
-                'assets/image_shoes.png',
+              child: Image.network(
+                widget.product.galleries![0].url,
                 width: 54,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Expanded(
@@ -78,15 +86,15 @@ class DetailChatPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'COURT VISIO...',
+                    widget.product.name!,
                     style: primaryTextStyle,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 2,
                   ),
                   Text(
-                    '\$57,15',
+                    '\$${widget.product.price}',
                     style: priceTextStyle.copyWith(
                       fontWeight: medium,
                     ),
@@ -94,9 +102,16 @@ class DetailChatPage extends StatelessWidget {
                 ],
               ),
             ),
-            Image.asset(
-              'assets/button_close.png',
-              width: 22,
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  widget.product = UninitializedProductModel();
+                });
+              },
+              child: Image.asset(
+                'assets/button_close.png',
+                width: 22,
+              ),
             ),
           ],
         ),
@@ -105,18 +120,20 @@ class DetailChatPage extends StatelessWidget {
 
     Widget chatInput() {
       return Container(
-        margin: EdgeInsets.all(20),
+        margin: const EdgeInsets.all(20),
         child: Column(
           mainAxisSize: MainAxisSize.min, // ukuran seminimal children
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            productPreview(),
+            widget.product is UninitializedProductModel
+                ? const SizedBox()
+                : productPreview(),
             Row(
               children: [
                 Expanded(
                   child: Container(
                     height: 45,
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 16,
                     ),
                     decoration: BoxDecoration(
@@ -133,7 +150,7 @@ class DetailChatPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 Image.asset(
@@ -150,7 +167,7 @@ class DetailChatPage extends StatelessWidget {
     Widget content() {
       return ListView(
         padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-        children: [
+        children: const [
           ChatBubble(
             isSender: true,
             text: 'Hi, This item still available?',

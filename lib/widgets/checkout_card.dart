@@ -9,8 +9,8 @@ class CheckoutCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 12),
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 20),
+      margin: const EdgeInsets.only(top: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
       decoration: BoxDecoration(
         color: bgColor4,
         borderRadius: BorderRadius.circular(12),
@@ -23,11 +23,11 @@ class CheckoutCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               image: DecorationImage(
-                image: NetworkImage(cartModel.productModel!.galleries[0].url),
+                image: NetworkImage(cartModel.productModel!.galleries![0].url),
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 12,
           ),
           Expanded(
@@ -35,11 +35,11 @@ class CheckoutCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  cartModel.productModel!.name,
+                  cartModel.productModel!.name!,
                   style: primaryTextStyle.copyWith(fontWeight: semiBold),
                   overflow: TextOverflow.ellipsis,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 2,
                 ),
                 Text(
@@ -49,7 +49,7 @@ class CheckoutCard extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 12,
           ),
           Text(

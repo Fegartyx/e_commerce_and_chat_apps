@@ -29,13 +29,13 @@ class ProductTile extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image.network(
-                products.galleries[0].url,
+                products.galleries![0].url,
                 width: 120,
                 height: 120,
                 fit: BoxFit.cover,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 12,
             ),
             Expanded(
@@ -48,18 +48,18 @@ class ProductTile extends StatelessWidget {
                       fontSize: 12,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 6,
                   ),
                   Text(
-                    products.name,
+                    products.name!,
                     style: primaryTextStyle.copyWith(
                       fontSize: 16,
                       fontWeight: semiBold,
                     ),
                     maxLines: 1,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 6,
                   ),
                   Text(

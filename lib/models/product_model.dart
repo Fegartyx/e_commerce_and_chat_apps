@@ -3,26 +3,26 @@ import 'package:e_commerce_and_chat_apps/models/category_model.dart';
 import 'gallery_model.dart';
 
 class ProductModel {
-  late int id;
-  late String name;
-  late double price;
+  int? id;
+  String? name;
+  double? price;
   String? description;
   String? tags;
   CategoryModel? categoryModel;
   DateTime? createdAt;
   DateTime? updatedAt;
-  late List<GalleryModel> galleries;
+  List<GalleryModel>? galleries;
 
   ProductModel({
-    required this.id,
-    required this.name,
-    required this.price,
+    this.id,
+    this.name,
+    this.price,
     this.description,
     this.tags,
     this.categoryModel,
     this.createdAt,
     this.updatedAt,
-    required this.galleries,
+    this.galleries,
   });
 
   ProductModel.fromJson(Map<String, dynamic> json) {
@@ -48,6 +48,8 @@ class ProductModel {
         'category': categoryModel?.toJson(),
         'created_at': createdAt.toString(),
         'updated_at': updatedAt.toString(),
-        'galleries': galleries.map((gallery) => gallery.toJson()).toList(),
+        'galleries': galleries!.map((gallery) => gallery.toJson()).toList(),
       };
 }
+
+class UninitializedProductModel extends ProductModel {}

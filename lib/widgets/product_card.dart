@@ -25,22 +25,22 @@ class ProductCard extends StatelessWidget {
         margin: EdgeInsets.only(right: defaultMargin),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Color(0xffECEDEF),
+          color: const Color(0xffECEDEF),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Image.network(
-              products.galleries[0].url,
+              products.galleries![0].url,
               width: 215,
               height: 150,
               fit: BoxFit.cover,
             ),
             Container(
-              margin: EdgeInsets.symmetric(
+              margin: const EdgeInsets.symmetric(
                 horizontal: 20,
               ),
               child: Column(
@@ -52,11 +52,11 @@ class ProductCard extends StatelessWidget {
                       fontSize: 12,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 6,
                   ),
                   Text(
-                    products.name,
+                    products.name!,
                     style: blackTextStyle.copyWith(
                       fontSize: 18,
                       fontWeight: semiBold,
@@ -64,7 +64,7 @@ class ProductCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 6,
                   ),
                   Text(

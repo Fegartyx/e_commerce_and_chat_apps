@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerce_and_chat_apps/models/product_model.dart';
+import 'package:e_commerce_and_chat_apps/pages/detail_chat_page.dart';
 import 'package:e_commerce_and_chat_apps/providers/cart_provider.dart';
 import 'package:e_commerce_and_chat_apps/providers/wishlist_provider.dart';
 import 'package:e_commerce_and_chat_apps/theme.dart';
@@ -7,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ProductPages extends StatefulWidget {
-  late final ProductModel products;
-  ProductPages(this.products);
+  final ProductModel products;
+  const ProductPages(this.products);
 
   @override
   State<ProductPages> createState() => _ProductPagesState();
@@ -40,7 +41,7 @@ class _ProductPagesState extends State<ProductPages> {
     Future<void> showSuccessDialog() async {
       return showDialog(
         context: context,
-        builder: (BuildContext context) => Container(
+        builder: (BuildContext context) => SizedBox(
           width: MediaQuery.of(context).size.width - (2 * defaultMargin),
           child: AlertDialog(
             backgroundColor: bgColor3,
@@ -66,7 +67,7 @@ class _ProductPagesState extends State<ProductPages> {
                     'assets/icon_success.png',
                     width: 100,
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Text(
                     'Hurray :)',
                     style: primaryTextStyle.copyWith(
@@ -74,13 +75,13 @@ class _ProductPagesState extends State<ProductPages> {
                       fontWeight: semiBold,
                     ),
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Text(
                     'Item added successfully',
                     style: subtitleTextStyle,
                   ),
-                  SizedBox(height: 20),
-                  Container(
+                  const SizedBox(height: 20),
+                  SizedBox(
                     width: 154,
                     height: 44,
                     child: TextButton(
@@ -111,19 +112,19 @@ class _ProductPagesState extends State<ProductPages> {
     // penanda di bawah gambar
     Widget indicator(int index) {
       return Container(
-        margin: EdgeInsets.symmetric(horizontal: 2),
+        margin: const EdgeInsets.symmetric(horizontal: 2),
         width: currentIndex == index ? 16 : 4,
         height: 4,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: currentIndex == index ? primaryColor : Color(0xffC4C4C4),
+          color: currentIndex == index ? primaryColor : const Color(0xffC4C4C4),
         ),
       );
     }
 
     Widget familiarShoesCard(imageUrl) {
       return Container(
-        margin: EdgeInsets.only(right: 16),
+        margin: const EdgeInsets.only(right: 16),
         width: 54,
         height: 54,
         decoration: BoxDecoration(
@@ -167,7 +168,7 @@ class _ProductPagesState extends State<ProductPages> {
             ),
           ),
           CarouselSlider(
-            items: widget.products.galleries
+            items: widget.products.galleries!
                 .map(
                   (image) => Image.network(
                     image.url,
@@ -185,12 +186,12 @@ class _ProductPagesState extends State<ProductPages> {
                   });
                 }),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: widget.products.galleries.map((e) {
+            children: widget.products.galleries!.map((e) {
               index++;
               return indicator(index);
             }).toList(),
@@ -202,11 +203,11 @@ class _ProductPagesState extends State<ProductPages> {
     Widget content() {
       int index = -1;
       return Container(
-        margin: EdgeInsets.only(top: 17),
+        margin: const EdgeInsets.only(top: 17),
         height: MediaQuery.of(context).size.height,
         width: double.infinity,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.vertical(
+          borderRadius: const BorderRadius.vertical(
             top: Radius.circular(24),
           ),
           color: bgColor,
@@ -227,7 +228,7 @@ class _ProductPagesState extends State<ProductPages> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.products.name,
+                          widget.products.name!,
                           style: primaryTextStyle.copyWith(
                             fontSize: 16,
                             fontWeight: semiBold,
@@ -249,7 +250,7 @@ class _ProductPagesState extends State<ProductPages> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             backgroundColor: secondaryColor,
-                            content: Text(
+                            content: const Text(
                               'Has been added to the Wishlist',
                               textAlign: TextAlign.center,
                             ),
@@ -259,7 +260,7 @@ class _ProductPagesState extends State<ProductPages> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             backgroundColor: alertColor,
-                            content: Text(
+                            content: const Text(
                               'Has been removed from the Wishlist',
                               textAlign: TextAlign.center,
                             ),
@@ -280,7 +281,7 @@ class _ProductPagesState extends State<ProductPages> {
             // NOTE: PRICE
             Container(
               width: double.infinity,
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               margin: EdgeInsets.only(
                 top: 20,
                 left: defaultMargin,
@@ -323,7 +324,7 @@ class _ProductPagesState extends State<ProductPages> {
                       'Description',
                       style: primaryTextStyle.copyWith(fontWeight: medium),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 12,
                     ),
                     Text(
@@ -349,7 +350,7 @@ class _ProductPagesState extends State<ProductPages> {
                       style: primaryTextStyle.copyWith(fontWeight: medium),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   SingleChildScrollView(
@@ -376,23 +377,29 @@ class _ProductPagesState extends State<ProductPages> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/detail-chat');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              DetailChatPage(product: widget.products),
+                        ),
+                      );
                     },
                     child: Container(
                       width: 54,
                       height: 54,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage('assets/button_chat.png'),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 16,
                   ),
                   Expanded(
-                    child: Container(
+                    child: SizedBox(
                       height: 54,
                       child: TextButton(
                         onPressed: () {

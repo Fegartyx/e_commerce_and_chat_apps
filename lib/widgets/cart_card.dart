@@ -13,7 +13,7 @@ class CartCard extends StatelessWidget {
     CartProvider cartProvider = Provider.of<CartProvider>(context);
     return Container(
       margin: EdgeInsets.only(top: defaultMargin),
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
         color: bgColor4,
         borderRadius: BorderRadius.circular(12),
@@ -29,11 +29,11 @@ class CartCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   image: DecorationImage(
                     image:
-                        NetworkImage(cartModel.productModel!.galleries[0].url),
+                        NetworkImage(cartModel.productModel!.galleries![0].url),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 12,
               ),
               Expanded(
@@ -41,7 +41,7 @@ class CartCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      cartModel.productModel!.name,
+                      cartModel.productModel!.name!,
                       style: primaryTextStyle.copyWith(fontWeight: semiBold),
                     ),
                     Text(
@@ -62,14 +62,14 @@ class CartCard extends StatelessWidget {
                       width: 16,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 2,
                   ),
                   Text(
                     cartModel.quantity.toString(),
                     style: primaryTextStyle.copyWith(fontWeight: medium),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 2,
                   ),
                   GestureDetector(
@@ -85,7 +85,7 @@ class CartCard extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
           GestureDetector(
@@ -99,7 +99,7 @@ class CartCard extends StatelessWidget {
                   width: 10,
                   height: 12,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 4,
                 ),
                 Text(

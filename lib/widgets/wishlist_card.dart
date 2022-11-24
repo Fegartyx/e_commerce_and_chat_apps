@@ -12,8 +12,8 @@ class WishlistCard extends StatelessWidget {
   Widget build(BuildContext context) {
     WishlistProvider wishlistProvider = Provider.of<WishlistProvider>(context);
     return Container(
-      margin: EdgeInsets.only(top: 20),
-      padding: EdgeInsets.only(
+      margin: const EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.only(
         top: 10,
         left: 12,
         bottom: 14,
@@ -28,11 +28,11 @@ class WishlistCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
             child: Image.network(
-              productModel.galleries[0].url,
+              productModel.galleries![0].url,
               width: 60,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 12,
           ),
           Expanded(
@@ -40,12 +40,12 @@ class WishlistCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  productModel.name,
+                  productModel.name!,
                   style: primaryTextStyle.copyWith(
                     fontWeight: semiBold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 2,
                 ),
                 Text(

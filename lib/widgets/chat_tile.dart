@@ -1,3 +1,5 @@
+import 'package:e_commerce_and_chat_apps/models/product_model.dart';
+import 'package:e_commerce_and_chat_apps/pages/detail_chat_page.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce_and_chat_apps/theme.dart';
 
@@ -8,10 +10,16 @@ class ChatTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/detail-chat');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                DetailChatPage(product: UninitializedProductModel()),
+          ),
+        );
       },
       child: Container(
-        margin: EdgeInsets.only(top: 33),
+        margin: const EdgeInsets.only(top: 33),
         child: Column(
           children: [
             Row(
@@ -21,7 +29,7 @@ class ChatTile extends StatelessWidget {
                   width: 54,
                   height: 54,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 12,
                 ),
                 Expanded(
@@ -47,10 +55,10 @@ class ChatTile extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
-            Divider(
+            const Divider(
               thickness: 1,
               color: Color(0xff2B2939),
             ),

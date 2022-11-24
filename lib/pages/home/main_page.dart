@@ -19,19 +19,19 @@ class _MainPageState extends State<MainPage> {
   Widget body() {
     switch (currentIndex) {
       case 0:
-        return HomePage();
+        return const HomePage();
         break;
       case 1:
-        return ChatPage();
+        return const ChatPage();
         break;
       case 2:
-        return WishlistPage();
+        return const WishlistPage();
         break;
       case 3:
-        return ProfilePage();
+        return const ProfilePage();
         break;
       default:
-        return HomePage();
+        return const HomePage();
     }
   }
 
@@ -50,11 +50,11 @@ class _MainPageState extends State<MainPage> {
 
   Widget customBottomNav() {
     return ClipRRect(
-      borderRadius: BorderRadius.vertical(
+      borderRadius: const BorderRadius.vertical(
         top: Radius.circular(30),
       ),
       child: BottomAppBar(
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         notchMargin: 12,
         clipBehavior: Clip.antiAlias,
         child: BottomNavigationBar(
@@ -70,7 +70,7 @@ class _MainPageState extends State<MainPage> {
           items: [
             BottomNavigationBarItem(
               icon: Container(
-                margin: EdgeInsets.only(
+                margin: const EdgeInsets.only(
                   top: 20,
                   bottom: 10,
                 ),
@@ -84,7 +84,7 @@ class _MainPageState extends State<MainPage> {
             ),
             BottomNavigationBarItem(
               icon: Container(
-                margin: EdgeInsets.only(
+                margin: const EdgeInsets.only(
                   top: 21,
                   bottom: 10,
                 ),
@@ -98,7 +98,7 @@ class _MainPageState extends State<MainPage> {
             ),
             BottomNavigationBarItem(
               icon: Container(
-                margin: EdgeInsets.only(
+                margin: const EdgeInsets.only(
                   top: 21,
                   bottom: 10,
                 ),
@@ -112,7 +112,7 @@ class _MainPageState extends State<MainPage> {
             ),
             BottomNavigationBarItem(
               icon: Container(
-                margin: EdgeInsets.only(
+                margin: const EdgeInsets.only(
                   top: 20,
                   bottom: 10,
                 ),
